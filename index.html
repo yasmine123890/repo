@@ -4,425 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Half Page Section</title>
+  <link rel="stylesheet" href="./css/style.css">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-
-  <style>
-    :root {
-      --main_color: #0056b3; 
-      --second_color: #66b3ff; 
-      --hover_color: #004494; 
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #004494; 
-    }
-
-    nav {
-      font-weight: bolder;
-      background: rgb(126, 182, 255);
-      border-bottom: 1px solid #ddd;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 10;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;  
-    }
-
-    .logo-icon img {
-      height: 50px;
-      width: auto;
-      transition: transform 0.3s ease;
-    }
-
-    .logo-icon img:hover {
-      transform: scale(1.05);
-    }
-
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .menu a {
-      text-decoration: none;
-      color: black;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    .menu a:hover {
-      color: var(--main_color);
-    }
-
-    .menu a.products::after {
-      content: '▼';
-      font-size: 10px;
-      margin-left: 4px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .menu a.products:hover::after {
-      transform: rotate(180deg);
-    }
-
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .cart {
-      position: relative;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .cart span {
-      position: absolute;
-      top: -6px;
-      right: -8px;
-      background: var(--main_color);
-      color: white;
-      font-size: 12px;
-      padding: 2px 6px;
-      border-radius: 50%;
-    }
-
-    .search-btn {
-      font-size: 18px;
-      cursor: pointer;
-      color: black;
-      transition: color 0.3s ease;
-    }
-
-    .search-btn:hover {
-      color: var(--main_color);
-    }
-
-    .quote-btn {
-      background: var(--main_color);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .quote-btn:hover {
-      background: var(--second_color);
-    }
-
-    .section-wrapper {
-      display: flex;
-      width: 100%;
-      height: 90vh;
-      opacity: 0; 
-      transform: translateY(20px); 
-      transition: opacity 0.8s ease, transform 0.8s ease; 
-    }
-
-    .section-wrapper.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .wrapper_left {
-      animation: slideIn 2s ease-out forwards; 
-      flex: 1;
-      background-color: #004494; 
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 40px;
-      gap: 20px;
-    }
-
-    .wrapper_left h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: white;
-      margin: 0;
-    }
-
-    .right_img{
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      opacity: 0; 
-      transform: translateY(20px); 
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .right_img.visible {
-      opacity: 1; 
-      transform: translateY(0);
-    }
-
-    .right_img img {
-      width: 100%;
-      height: 100%;
-      object-fit:fill;
-    }
-
-    .carousel-item img {
-      height: 500px;
-      object-fit: cover;
-      object-position: center;
-    }
-    .slide{
-      margin-top: 10px;
-      padding: 50px;
-    }
-
-    @media (max-width: 768px) {
-      .menu {
-        display: none; 
-        flex-direction: column;
-        width: 100%;
-        background: rgb(126, 182, 255);
-        position: absolute;
-        top: 60px; 
-        left: 0;
-        z-index: 1;
-      }
-
-      .menu.active {
-        display: flex; 
-      }
-
-      .hamburger {
-        display: block; 
-        font-size: 24px;
-        cursor: pointer;
-        color: black;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .hamburger {
-        display: none; 
-      }
-    }
-
-    .scroll-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--main_color);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .scroll-btn:hover {
-      background: var(--hover_color);
-    }
-
-
-
-    /* footer  */
-
     
-
-.footer {
-    background: var(--hover_color);
-    color: #fff;
-    padding: 40px 0 0 0;
-    font-family: Arial, sans-serif;
-}
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 30px;
-    flex-wrap: wrap;
-}
-footer .taps {
-    width: 100%;
-    margin: 10px 0;
-    position: relative;
-
-}
-footer .taps::after{
-    content: " ";
-    position: absolute;
-    width: 100% ;
-    bottom: 0;
-    left: 0;
-    height:1px;
-    background-color: #fff;
-}
-footer .taps ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-footer .taps ul li {
-    list-style: none;
-}
-
-
-footer .taps a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    transition: 0.3s ease-in-out;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-} 
-footer .taps a:hover {
-    color: var(--second_color);
-}
-.footer-section {
-    flex: 1 1 250px;
-    margin: 0 20px 40px 20px;
-    position: relative;
-}
-
-
-.footer-section:not(:last-child) {
-    border-right: 2px solid #fff;
-}
-
-.footer-logo {
-    width: 180px;
-    margin-bottom: 20px;
-}
-.footer-slogan {
-    margin-bottom: 30px;
-    font-size: 1.2em;
-    line-height: 1.5;
-}
-.footer-social a {
-    display: inline-block;
-    background: #222;
-    color: var(--main_color);
-    width: 45px;
-    height: 45px;
-    text-align: center;
-    line-height: 45px;
-    margin-right: 10px;
-    font-size: 1.5em;
-    border-radius: 4px;
-    transition: background 0.3s;
-    text-decoration: none;
-}
-.footer-social a:hover {
-    background: var(--main_color);
-    color: #fff;
-}
-.footer-section.center h3,
-.footer-section.right h3 {
-    font-size: 1.3em;
-    margin-bottom: 18px;
-    color: #fff;
-    font-weight: bold;
-}
-.footer-section.center p,
-.footer-section.right p {
-    margin-bottom: 20px;
-    color: rgb(255, 250, 250);
-}
-.footer-link {
-    color:black;
-    font-weight: bolder;
-    text-decoration: underline;
-    display: inline-block;
-    margin-top: 10px;
-}
-.newsletter-form {
-    display: flex;
-    margin-top: 15px;
-}
-.newsletter-form input[type="email"] {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 4px 0 0 4px;
-    outline: none;
-}
-.btn_footer {
-    background: var(--main_color);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-.newsletter-form button:hover {
-    background: var(--main_color);
-}
-@media (max-width: 900px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .footer-section {
-        margin-bottom: 0 !important;
-        width: 100%;
-        border-right: none !important;
-    }
-    .footer-section.center{
-        padding-bottom: 0px !important;
-        margin-bottom: 0px !important;
-    }
-    .footer-section.right button{
-        margin-top: 10px !important;
-    }
-    .footer-section:not(:last-child) {
-        border-right: none;
-        border-bottom: 1px solid #222;
-        padding-bottom: 20px;
-    }
-
-    .footer .taps ul {
-        padding-left: 0;
-    }
-    .footer .taps a {
-        font-size: 14px;
-        font-weight: 400;
-
-    }
-} 
-
-
-
-  </style>
 </head>
 <body>
 
@@ -511,7 +98,63 @@ footer .taps a:hover {
   <i class="fas fa-chevron-up"></i>
 </button>
 
+<div class="lib-section">
+  <header class="lib-header">
+    <h1>Watch, Read, Listen</h1>
+  </header>
+  <div class="lib-container">
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">Pipe Clamps and Hangers</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">Fiberglass Cable Tray</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">Weatherproof Cable Trunk</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">UnderFloor Trunking</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">PVC Electrical Conduits & Accessories</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">C-Channel Strut Systems</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#"> Cable Trunkings</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">Basket Trays & Accessories</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">Cable Ladders</a>
+      <div class="lib-product-meta" >— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+    <div class="lib-product-box">
+      <a class="lib-product-title" href="#">Cable Trays & Accessories</a>
+      <div class="lib-product-meta">— by <a href="#" class="lib_a">MEP Solutions</a></div>
+    </div>
+  </div>
+</div>
 
+<div class="pagination-container">
+  <div class="page-numbers">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+  </div>
+  <a href="#" class="next-page">Next Page</a>
+</div>
 
 <!-- footer -->
 
