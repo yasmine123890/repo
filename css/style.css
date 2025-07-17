@@ -236,7 +236,79 @@
   .scroll-btn:hover {
     background: var(--hover_color);
   }
+  
+  /* section hero 2 */
 
+
+
+
+
+  .hero_2{
+    background-color:var(--hover_color);
+}
+
+.hero_2 .header{
+    text-align: center;
+}
+
+.hero_2 .header h2{
+  color: aliceblue;
+  font-family: Arial, sans-serif;  
+  font-weight : 600 ;
+}
+
+.hero_2 .header p{
+  margin-top: 10px;
+  font-size: 16px;
+
+    color: aliceblue;
+}
+
+.hero_2 .hero_2_card{
+    border: 2px solid ;
+    background-color: var(--second_color);
+    color: aliceblue;
+    height:280px;
+    padding: 20px;
+}
+
+.hero_2 .hero_2_card .info{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.hero_2 .hero_2_card .info p{
+    margin-top: 10px;
+}
+
+.hero_2 .hero_2_card .icon {
+    margin-top: 20px;
+    margin: auto;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: var(--hover_color);
+    display: flex;
+    transition: all 0.2s ease-in-out;
+
+}
+.hero_2 .hero_2_card .icon span {
+  font-size: 48px;
+  margin: auto;
+  line-height: 2.2;
+ 
+}
+.hero_2 .hero_2_card:hover .icon   {
+  background-color: var(--main_color);
+}
+
+
+@media (max-width: 900px) {
+  .hero_2 .hero_2_card {
+    margin-top: 15px;
+}
+
+}
 
 
   /* footer  */
