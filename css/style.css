@@ -2,13 +2,28 @@
     --main_color: #0056b3; 
     --second_color: #66b3ff; 
     --hover_color: #004494; 
+
+    /* _ */
+     /* 🌊 الأزرق */
+  --primary-blue: #007BFF;       /* الأزرق الأساسي */
+  --primary-blue-dark: #0056b3;  /* للأزرار والـ hover */
+  --primary-blue-light: #e6f0ff; /* خلفيات فاتحة */
+  
+
+  /* ⚪ الأبيض والرمادي */
+  --background-light: #f5f5f5;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+
+  /* 🎨 ألوان مساعدة */
+  --border-color: #dddddd;
   }
 
   body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #004494; 
+    /* background-color: #004494;  */
   }
 
   nav {
@@ -447,6 +462,18 @@ footer .taps a:hover {
 .newsletter-form button:hover {
   background: var(--main_color);
 }
+
+footer .copy_right {
+  width: 100%;
+  text-align: center;
+  background-color: #000000;
+
+}
+footer .copy_right p {
+  margin-bottom: 0px;
+  padding: 10px;
+}
+
 @media (max-width: 900px) {
   .footer-container {
       flex-direction: column;
